@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block courousel %}{% endblock %}
+
+{% block content %}
+    <!-- Three columns of text below the carousel -->
+    <div class="best">
+        <h3>Nos meilleurs ventes</h3>
+        <p>Découvrez les articles les plus vendus</p>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-3">
+                {% include 'product/single_product.html.twig' %}
+            </div>
+            {% endfor %}
+        </div>
+    </div><!-- /row. -->
+
+    <!-- Start the featurettes -->
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Une équipe de professionnels <span class="text-muted">au grand savoir faire</span> </h2>
+            <p class="lead">Blablabla</p>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ asset('assets/img/first.jpg') }}" class="img-fluid" alt="Un savoir faire Breton">
+        </div>
+    </div>
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <img src="{{ asset('assets/img/second.jpg') }}" class="img-fluid" alt="Une boutique ouverte toute l'année">
+        </div>
+    </div>
+
+{% endblock %}
