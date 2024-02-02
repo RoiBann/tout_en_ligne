@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="description" content="La boutique qui vend uniquement du made in France">
+		<meta name="description" content="La boutique qui vend uniquement du made in Breizh">
 		<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 		<meta name="generator" content="Jekyll v4.1.1">
 		<title>
@@ -45,30 +45,30 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('products') }}">Nos produits</a>
+{#							<a class="nav-link" href="{{ path('products') }}">Nos produits</a>#}
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="#">Qui sommes-nous ?</a>
 						</li>
 						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('contact') }}">Contact</a>
+{#							<a class="nav-link" href="{{ path('contact') }}">Contact</a>#}
 						</li>
 					</ul>
 
 					<div class="navbar-item-custom">
 						{% if app.user %}
-							<a href="{{ path('account') }}">Mon compte
+{#							<a href="{{ path('account') }}">Mon compte#}
 								<small>({{ app.user.firstname }})</small>
 							</a>
 							|
 							<a href="{{ path('app_logout') }}">Déconnexion</a>
 						{% else %}
-							<a href="{{ path('app_login') }}">Connexion</a>
+{#							<a href="{{ path('app_login') }}">Connexion</a>#}
 							|
 							<a href="{{ path('register') }}">Inscription</a>
 						{% endif %}
 					</div>
-					<a href="{{ path('cart') }}">
+{#					<a href="{{ path('cart') }}">#}
 						<img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="mon panier">
 					</a>
 				</div>
