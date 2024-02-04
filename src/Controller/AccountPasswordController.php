@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\RegisterType;
+use App\Form\ChangePasswordType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,45 +10,43 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RegisterController extends AbstractController
+class AccountPasswordController extends AbstractController
 {
+
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
-    #[Route('/inscription', name: 'register')]
+
+    #[Route('/compte/modifier-mot-de-passe', name: 'account_password')]
     public function index(Request $request, UserPasswordHasherInterface $hasher): Response
     {
         $notification = null;
 
-        $user = new User();
-        $form = $this->createForm(RegisterType::class, $user);
+        $user = $this->getUser();
+        $form = $this->createForm(ChangePasswordType::class, $user);
 
+        // Demande au formulaire s'il est prêt à écouter, manipuler la demande entrante
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+            $old_password = $form->get('old_password')->getData();
 
-            $user = $form->getData();
+            if ($hasher->isPasswordValid($user, $old_password)){
+                $new_password = $form->get('new_password')->getData();
+                $password = $hasher->hashPassword($user, $new_password);
 
-            $search_email = $this->entityManager->getRepository(User::class)->findOneByEmail($user->getEmail());
-
-            if (!$search_email){
-                $password = $hasher->hashPassword($user, $user->getPassword());
                 $user->setPassword($password);
-
-                // Fige ou hydrate les données
-                $this->entityManager->persist($user);
                 $this->entityManager->flush();
 
-                $notification = "Votre inscription s'est correctement déroulée. Vous pouvez dès à présent vous connecter à votre compte.";
+                $notification = "Votre mot de passe a bien été mis à jour.";
             } else {
-                $notification = "L'email que vous avez renseigné existe déjà.";
+                $notification = "Votre mot de passe actuel n'est pas le bon.";
             }
         }
-
-        return $this->render('register/index.html.twig', [
+        return $this->render('account/password.html.twig', [
             'form' => $form->createView(),
             'notification' => $notification
         ]);

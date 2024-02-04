@@ -57,13 +57,13 @@
 
 					<div class="navbar-item-custom">
 						{% if app.user %}
-{#							<a href="{{ path('account') }}">Mon compte#}
+							<a href="{{ path('account') }}">Mon compte
 								<small>({{ app.user.firstname }})</small>
 							</a>
 							|
 							<a href="{{ path('app_logout') }}">Déconnexion</a>
 						{% else %}
-{#							<a href="{{ path('app_login') }}">Connexion</a>#}
+							<a href="{{ path('app_login') }}">Connexion</a>
 							|
 							<a href="{{ path('register') }}">Inscription</a>
 						{% endif %}
@@ -118,7 +118,9 @@
 			    ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
-			<div class="container_marketing {% if block('carousel') is not defined %}mt-5{% endif %}"> {% block content %}{% endblock %}
+			<div class="container_marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
+
+				{% block content %}{% endblock %}
 
 				</div>
 				<!-- /.container -->
