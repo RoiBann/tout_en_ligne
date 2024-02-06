@@ -1,5 +1,6 @@
 body {
     position: relative;
+    min-height: 100vh;
 }
 .navbar-item-custom, .navbar-item-custom a{
     color: white;
@@ -74,6 +75,12 @@ body {
     background-color: #f4f8ff;
     padding: 20px 65px;
     margin-top: 5px;
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .col-form-label {
