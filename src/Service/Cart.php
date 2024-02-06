@@ -66,25 +66,25 @@ class Cart
         return $session->set('cart', $cart);
     }
 
-//    public function getFull()
-//    {
-//        $cartComplete = [];
-//
-//        if ($this->get()){
-//            foreach ($this->get() as $id => $quantity){
-//                $product_object = $this->entityManager->getRepository(Product::class)->findOneBy($id);
-//
-//                if (!$product_object){
-//                    $this->delete($id);
-//                    continue;
-//                }
-//
-//                $cartComplete[] = [
-//                    'product' => $product_object,
-//                    'quantity' => $quantity
-//                ];
-//            }
-//        }
-//        return $cartComplete;
-//    }
+    public function getFull()
+    {
+        $cartComplete = [];
+
+        if ($this->get()){
+            foreach ($this->get() as $id => $quantity){
+                $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+
+                if (!$product_object){
+                    $this->delete($id);
+                    continue;
+                }
+
+                $cartComplete[] = [
+                    'product' => $product_object,
+                    'quantity' => $quantity
+                ];
+            }
+        }
+        return $cartComplete;
+    }
 }
