@@ -56,7 +56,7 @@ class Cart
     public function decrease($id)
     {
         $session = $this->requestStack->getSession();
-        $cart = $session->get('cart'[]);
+        $cart = $session->get('cart', []);
 
         if ($cart[$id] > 1){
             $cart[$id]--;
