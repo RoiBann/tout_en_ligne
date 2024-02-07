@@ -35,48 +35,51 @@
 		<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="{{ path('home')}}">Ma Boutique
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+	<header>
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{ path('home')}}">La boutique Bretonne</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('products') }}">Nos produits</a>
+					<ul class="navbar-nav me-auto mb-2 mb-md-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('products') }}">Nos produits</a>
 						</li>
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a class="nav-link" href="#">Qui sommes-nous ?</a>
 						</li>
-						<li class="nav-item active">
+{#						<li class="nav-item">#}
 {#							<a class="nav-link" href="{{ path('contact') }}">Contact</a>#}
-						</li>
+{#						</li>#}
 					</ul>
 
-					<div class="navbar-item-custom">
-						{% if app.user %}
-							<a href="{{ path('account') }}">Mon compte
-								<small>({{ app.user.firstname }})</small>
-							</a>
-							|
-							<a href="{{ path('app_logout') }}">Déconnexion</a>
-						{% else %}
-							<a href="{{ path('app_login') }}">Connexion</a>
-							|
-							<a href="{{ path('register') }}">Inscription</a>
-						{% endif %}
+					<!-- Déplacez la div contenant les liens vers la droite -->
+					<div class="d-flex">
+						<div class="navbar-item-custom me-3">
+							{% if app.user %}
+								<a href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> |
+								<a href="{{ path('app_logout') }}">Déconnexion</a>
+							{% else %}
+								<a href="{{ path('app_login') }}">Connexion</a> |
+								<a href="{{ path('register') }}">Inscription</a>
+							{% endif %}
+						</div>
+
+						<!-- Placez le panier à droite à l'extérieur de la barre de navigation -->
+						<a href="{{ path('cart') }}" class="ms-auto me-3">
+							<img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="mon panier">
+						</a>
 					</div>
-					<a href="{{ path('cart') }}">
-						<img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="mon panier">
-					</a>
 				</div>
-			</nav>
-		</header>
+			</div>
+		</nav>
+	</header>
 
 
-		<main role="main">
+
+	<main role="main">
 
 			{% if block('carousel') is defined %}
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
