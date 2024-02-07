@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une adress - Ma boutique{% endblock %}
+
+{% block content %}
+    <h1>Gérer mes adresses</h1>
+    <a href="{{ 'account_address' }}">Retour</a>
+    <hr>
+    {{ form_start(form, {'attr': {'class': 'row'}}) }}
+    <div class="col-md-6">
+        {{ form_row(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Nom de famille'}}) }}
+    </div>
+    <div class="col-md-6">
+        {{ form_row(form.company, {'attr': {'class': 'form-control', 'placeholder': 'Entreprise'}}) }}
+    </div>
+    <div class="col-md-12">
+        {{ form_row(form.address, {'attr': {'class': 'form-control', 'placeholder': 'Adresse'}}) }}
+    </div>
+    <div class="col-md-4">
+        {{ form_row(form.postal, {'attr': {'class': 'form-control', 'placeholder': 'Code postal'}}) }}
+    </div>
+    <div class="col-md-4">
+        {{ form_row(form.city, {'attr': {'class': 'form-control', 'placeholder': 'Ville'}}) }}
+    </div>
+    <div class="col-md-4">
+        {{ form_row(form.country, {'attr': {'class': 'form-control', 'placeholder': 'Pays'}}) }}
+    </div>
+    <div class="col-md-12 mb-4">
+        {{ form_row(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+    </div>
+    {{ form_end(form) }}
+    <hr>
+{% endblock %}
