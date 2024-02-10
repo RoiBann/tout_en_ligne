@@ -1,3 +1,10 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+# config/routes.yaml
+order_success:
+    path: '/commande/merci/{stripeSessionId}'
+    controller: 'App\Controller\OrderSuccessController::success'
+    methods: ['GET']
+

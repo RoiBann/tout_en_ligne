@@ -39,6 +39,13 @@ class Order
     #[ORM\Column]
     private ?bool $isPaid = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $reference = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stripeSessionId = null;
+
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -127,10 +134,11 @@ class Order
         return $this->orderDetails;
     }
 
-    public function addOrderDetail(OrderDetails $orderDetail): static
+    public function addOrderDetail(OrderDetails $orderDetail): self
     {
         if (!$this->orderDetails->contains($orderDetail)) {
-            $this->orderDetails->add($orderDetail);
+//            $this->orderDetails->add($orderDetail);
+            $this->orderDetails[] = $orderDetail;
             $orderDetail->setMyOrder($this);
         }
 
@@ -149,7 +157,7 @@ class Order
         return $this;
     }
 
-    public function isIsPaid(): ?bool
+    public function getIsPaid(): ?bool
     {
         return $this->isPaid;
     }
@@ -160,4 +168,29 @@ class Order
 
         return $this;
     }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): static
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(?string $stripeSessionId): static
+    {
+        $this->stripeSessionId = $stripeSessionId;
+
+        return $this;
+    }
+
 }

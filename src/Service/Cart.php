@@ -59,8 +59,10 @@ class Cart
         $cart = $session->get('cart', []);
 
         if ($cart[$id] > 1){
+            // Retire une quantité
             $cart[$id]--;
         } else {
+            // Retire le produit
             unset($cart[$id]);
         }
         return $session->set('cart', $cart);
