@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable - La boutique Bretonne{% endblock %}
+{% block content %}
+
+    <div class="oops" style="background-image: url('{{ asset("assets/css/images/oops.jpg") }}'); width: 1920px; height: 1080px; color: white; text-align: center">
+        <div class="block-small">
+            <h2>Oops !</h2>
+            <p>Désolé, cette vitrine semble ne pas exister pour le moment</p>
+            <a href="{{ path('home') }}" class="btn btn-info">Revenir à la page d'accueil</a>
+        </div>
+    </div>
+
+{% endblock %}

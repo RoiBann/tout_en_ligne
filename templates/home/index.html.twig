@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block courousel %}{% endblock %}
+{% block carousel %}{% endblock %}
 
 {% block content %}
-    <!-- Three columns of text below the carousel -->
     <div class="best">
         <h3>Nos meilleurs ventes</h3>
         <p>Découvrez les articles les plus vendus</p>
         <div class="row">
-{#            {% for product in products %}#}
-{#            <div class="col-md-3">#}
-{#                {% include 'product/single_product.html.twig' %}#}
-{#            </div>#}
-{#            {% endfor %}#}
+            {% for product in products %}
+            <div class="col-md-3">
+                {% include 'product/single_product.html.twig' %}
+            </div>
+            {% endfor %}
         </div>
     </div><!-- /row. -->
 

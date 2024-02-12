@@ -8,3 +8,9 @@ order_success:
     controller: 'App\Controller\OrderSuccessController::success'
     methods: ['GET']
 
+update_preparation:
+    path: '/admin/order/update-preparation/{id}'
+    controller: 'App\Controller\Admin\OrderCrudController::updatePreparation'
+    methods: ['GET', 'POST']
+    requirements:
+        id: '\d+'

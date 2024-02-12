@@ -51,9 +51,9 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#">Qui sommes-nous ?</a>
 						</li>
-{#						<li class="nav-item">#}
-{#							<a class="nav-link" href="{{ path('contact') }}">Contact</a>#}
-{#						</li>#}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('contact') }}">Contact</a>
+						</li>
 					</ul>
 
 					<!-- Déplacez la div contenant les liens vers la droite -->
@@ -92,7 +92,7 @@
 
 					<div class="carousel-inner">
 						{% for key,header in headers %}
-							<div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/{{ header.illustration }}'); background-size: cover">
+							<div class="carousel-item {% if key == 0 %}active{% endif %}" style="background: url('/uploads/{{ header.illustration }}'); background-size: cover; ">
 								<div class="container">
 									<div class="carousel-caption text-left">
 										<h1>{{ header.title }}</h1>
@@ -109,11 +109,11 @@
 
 					<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
+						<span class="sr-only"></span>
 					</a>
 					<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
+						<span class="carousel-control-next-icon" aria-hidden="true" style="font-size: 2rem;"></span>
+						<span class="sr-only"></span>
 					</a>
 				</div>
 

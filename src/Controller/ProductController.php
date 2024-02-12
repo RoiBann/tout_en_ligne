@@ -51,6 +51,7 @@ class ProductController extends AbstractController
     {
         // Recherche un produit par son slug dans la base de données
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
+        $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
 
         // Si le produit n'est pas trouvé, redirige vers la page des produits
         if (!$product){
@@ -59,7 +60,8 @@ class ProductController extends AbstractController
 
         // Affiche la page du produit
         return $this->render('product/show.html.twig', [
-            'product' => $product
+            'product' => $product,
+            'products' => $products
         ]);
     }
 }

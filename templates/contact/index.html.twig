@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter - La boutique Bretonne{% endblock %}
+
+{% block content %}
+    <h2>Nous contacter</h2>
+    <p>N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p><hr>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-8">{{ form(form) }}</div>
+        <div class="col-md-4">
+            <hr>
+            06 06 06 06 06<br>
+            8 Rue de la rose des vents<br>
+            35400 Saint-Malo<br>
+            emmanuel.chauveau@hotmail.fr
+            <hr>
+        </div>
+    </div>
+{% endblock %}
